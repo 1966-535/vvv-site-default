@@ -1,5 +1,4 @@
 # vvv-wordpress-default
-complements  https://github.com/ForkedByObi/vvv
 
 ## Add to host file
 install [Vagrant Hosts Updater plugin](https://github.com/cogitatio/vagrant-hostsupdater) or
