@@ -1,6 +1,6 @@
 # WordPress
 [![Build Status](https://travis-ci.org/Metumaribe/WordPress-Pantheon.svg?branch=master)](https://travis-ci.org/Metumaribe/WordPress-Pantheon)
-
+# MOVE the files here into the public_html folder.
 
  [setup platform](https://github.com/Metumaribe/WordPress-Pantheon/blob/master/setup.md).
 This is a WordPress repository configured to run on the [Pantheon platform](https://pantheon.io).
