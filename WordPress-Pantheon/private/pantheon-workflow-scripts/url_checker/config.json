@@ -1,0 +1,9 @@
+{
+  "email": "merenuou@gmail.com",
+  "base_url": "http://dev-otestsite.pantheonsite.io",
+  "check_paths": [
+    "",
+    "user",
+    "bad-path"
+  ]
+}
