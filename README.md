@@ -8,3 +8,4 @@ add
  grep -q '^192.168.50.4' /etc/hosts || sudo sh -c 'echo "192.168.50.4 vvv.otestsite.dev" >> /etc/hosts'
 
 ```
+st
