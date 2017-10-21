@@ -32,6 +32,7 @@ if [ -d ${PLUGIN_DIR} ]; then
     git submodule add -f ${REPO_GL}qasa/deals-wordpress-plugin.git ${PLUGIN_DIR}/deals-wordpress-plugin
     git submodule add -f ${REPO_GH}Metumaribe/easy-digital-downloads.git ${PLUGIN_DIR}/easy-digital-downloads
     git submodule add -f ${REPO_GH}Metumaribe/WordPress-Admin-Style.git ${PLUGIN_DIR}/WordPress-Admin-Style
+    git submodule add -f ${REPO_GH}Metumaribe/wp-redis.git ${PLUGIN_DIR}/wp-redis
     if [ -d ${THEME_DIR} ]; then
         git submodule add -f ${REPO_GH}Metumaribe/timber-bootstrap.git ${THEME_DIR}/timber-bootstrap
     else
