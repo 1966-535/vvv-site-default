@@ -7,11 +7,9 @@ REPO_GH='git@github.com:'
 PLUGIN_DIR='../public_html/wp-content/plugins'
 THEME_DIR='../public_html/wp-content/themes'
 WP_URL='https://downloads.wordpress.org/plugin'
-#  'https://downloads.wordpress.org/plugin/timber-library.zip'
 
 
 if [ -d ${PLUGIN_DIR} ]; then
-
     # delete submodules first @todo add a check for presence of submodules
     # deinit all submodules from .gitmodules
     git submodule deinit .
@@ -19,18 +17,17 @@ if [ -d ${PLUGIN_DIR} ]; then
     rm -rf .git/modules/*
 
     # remove all submodules (`git rm`) from .gitmodules
-    git submodule | cut -c43- | while read -r line; do (git rm "$line"); done
+    git submodule | cut -c43- | while read -r line; do (git rm "${line}"); done
 
     # delete all submodule sections from .git/config (`git config --local --remove-section`) by fetching those from .git/config
-    git config --local -l | grep submodule | sed -e 's/^\(submodule\.[^.]*\)\(.*\)/\1/g' | while read -r line; do (git config --local --remove-section "$line"); done
+    git config --local -l | grep submodule | sed -e 's/^\(submodule\.[^.]*\)\(.*\)/\1/g' | while read -r line; do (git config --local --remove-section "${line}"); done
 
     # manually remove leftovers
     cat ../.gitmodules
     rm -rf ../.git/modules
     git rm -r --cached add-submodules.sh
 
-
-
+    # Add base submodules
     git submodule add -f ${REPO_GL}owllabs/metumaribe-utility.git ${PLUGIN_DIR}/metumaribe-utility
     git submodule add -f ${REPO_GL}qasa/deals-wordpress-plugin.git ${PLUGIN_DIR}/deals-wordpress-plugin
     git submodule add -f ${REPO_GH}Metumaribe/easy-digital-downloads.git ${PLUGIN_DIR}/easy-digital-downloads
