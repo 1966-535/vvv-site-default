@@ -15,6 +15,8 @@ if [ -d ${PLUGIN_DIR} ]; then
     # delete submodules first @todo add a check for presence of submodules
     # deinit all submodules from .gitmodules
     git submodule deinit .
+    git rm --cached .
+    rm -rf .git/modules/*
 
     # remove all submodules (`git rm`) from .gitmodules
     git submodule | cut -c43- | while read -r line; do (git rm "$line"); done
@@ -25,6 +27,8 @@ if [ -d ${PLUGIN_DIR} ]; then
     # manually remove leftovers
     cat ../.gitmodules
     rm -rf ../.git/modules
+    git rm -r --cached add-submodules.sh
+
 
 
     git submodule add -f ${REPO_GL}owllabs/metumaribe-utility.git ${PLUGIN_DIR}/metumaribe-utility
@@ -32,7 +36,6 @@ if [ -d ${PLUGIN_DIR} ]; then
     git submodule add -f ${REPO_GH}Metumaribe/easy-digital-downloads.git ${PLUGIN_DIR}/easy-digital-downloads
     git submodule add -f ${REPO_GH}Metumaribe/WordPress-Admin-Style.git ${PLUGIN_DIR}/WordPress-Admin-Style
     if [ -d ${THEME_DIR} ]; then
-        git submodule add -f ${REPO_GH}Metumaribe/branch.git ${THEME_DIR}/branch
         git submodule add -f ${REPO_GH}Metumaribe/timber-bootstrap.git ${THEME_DIR}/timber-bootstrap
     else
         echo "${THEME_DIR} doesn't exists"
