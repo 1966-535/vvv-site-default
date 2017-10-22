@@ -23,9 +23,13 @@ if [ -d ${PLUGIN_DIR} ]; then
     git config --local -l | grep submodule | sed -e 's/^\(submodule\.[^.]*\)\(.*\)/\1/g' | while read -r line; do (git config --local --remove-section "${line}"); done
 
     # manually remove leftovers
-    cat ../.gitmodules
+    # cat ../.gitmodules
     rm -rf ../.git/modules
     git rm -r --cached add-submodules.sh
+
+    # Delete the plugins
+    rm -rf ${PLUGIN_DIR}/*
+
 
     # Add base submodules
     git submodule add -f ${REPO_GL}owllabs/metumaribe-utility.git ${PLUGIN_DIR}/metumaribe-utility
@@ -44,8 +48,22 @@ fi
 
 # Install from WordPress.org
 cd ${PLUGIN_DIR}
+
 file_out=$(curl -o ./timber-library.zip ${WP_URL}'/timber-library.zip' 2>&1)
+
 if [[ $? -eq 0 && ${file_out} ]]; then
- unzip timber-library.zip
+ # install debug files
+ curl -o ./rewrite-rules-inspector.1.2.1.zip ${WP_URL}'/rewrite-rules-inspector.1.2.1.zip'
+ curl -o ./wp-crontrol.1.5.zip ${WP_URL}'/wp-crontrol.1.5.zip'
+ curl -o ./transients-manager.zip ${WP_URL}'/transients-manager.zip'
+ curl -o ./email-log.2.2.0.zip ${WP_URL}'/email-log.2.2.0.zip'
+ curl -o ./query-monitor.2.15.0.zip ${WP_URL}'/query-monitor.2.15.0.zip'
+
+ # Unzip all files
+ # unzip *.zip
+ find ./ -name \*.zip -exec unzip {} \;
  rm -rf *.zip
+ ls -al
+
+ rm -rf ${PLUGIN_DIR}/wp-crontrol/*
 fi
