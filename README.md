@@ -5,6 +5,6 @@ install [Vagrant Hosts Updater plugin](https://github.com/cogitatio/vagrant-host
 paste the below
 `http://vvv.otestsite.dev/` to host file
 ```bash
- grep -q '^192.168.50.4' /etc/hosts || sudo sh -c 'echo "192.168.50.4 vvv.otestsite.dev site1.vvv.otestmultisite.dev site2.vvv.otestmultisite.dev site3.vvv.otestmultisite.dev vvv.otestmultisite.dev" >> /etc/hosts'
+ grep -q '^192.168.50.4' /etc/hosts || sudo sh -c 'echo "192.168.50.4 vvv.otestsite.dev site1.otestmultisite.dev site2.otestmultisite.dev site3.otestmultisite.dev otestmultisite.dev" >> /etc/hosts'
 
 ```
