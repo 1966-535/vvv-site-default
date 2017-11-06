@@ -23,7 +23,7 @@ if [ -d ${PLUGIN_DIR} ]; then
     git clone ${REPO_GH}Metumaribe/wp-redis.git ${PLUGIN_DIR}/wp-redis
 
 else
-    echo "${PLUGIN_DIR} doesn't exists"
+    echo "${PLUGIN_DIR} doesn't exist"
 fi
 
 # Install from WordPress.org
